@@ -53,6 +53,7 @@ Run hello command:
 \$ node example.js hello --name Parrot
 hello Parrot welcome to yargs!
 
+//a setup process
 Setting up the project
 Let's start by creating a new directory and setting up the project using npm:
 
