@@ -1,15 +1,19 @@
 const { require } = require("yargs");
 
 var fs = require('fs');
+e.exports = getNotes;
 var getNotes = function() {
         return "concerts are fan";
     }
     // adding more notes in our body and title
 var addNote = function(tilte, body) {}
 var saveNotes = function(notes) {
-    var dataJSON = JSON.stringify(notes);
-    fs.writeFileSync("notes.json", dataJSON);
-}
+
+        //writing our notes using fs.writeFilesSync()
+        var dataJSON = JSON.stringify(notes);
+        fs.writeFileSync("notes.json", dataJSON);
+    }
+    //load the notes after adding to know the existing notes
 var loadNotes = function() {
     try {
         var data = fs.readFileSync('notes.jscon');
