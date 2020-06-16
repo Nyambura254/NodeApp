@@ -36,9 +36,18 @@ yargs.command({
 yargs.command({
     command: "list",
     describe: "list your notes",
-    handler: function() {
-        console.log("adding a new note");
+    builder: {
+        title: {
+            describe: "note body",
+            description: true,
+        },
+    },
+
+    handler: function(argv) {
+        console.log("Title:" + argv.title);
+        console.log("Body:" + argv.body);
     }
 });
+console.log(yargs.argv);
 
 console.log(yargs.argv);
