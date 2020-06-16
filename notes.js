@@ -2,8 +2,9 @@ const { require } = require("yargs");
 
 var fs = require('fs');
 var getNotes = function() {
-    return "concerts are fan";
-}
+        return "concerts are fan";
+    }
+    // adding more notes in our body and title
 var addNote = function(tilte, body) {}
 var saveNotes = function(notes) {
     var dataJSON = JSON.stringify(notes);
