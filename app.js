@@ -6,9 +6,10 @@ var validator = require("validator");
 var chalk = require("chalk");
 var yargs = require("yargs");
 
-var getNotes = require("./notes");
+var notes = require("./notes");
+const { demandOption, string } = require("yargs");
 
-var info = getNotes();
+var info = notes.getNotes();
 // console.log(info)
 // console.log(chalk.blue('Hello world!'));
 // console.log(validator.isEmail("jotienoochieng@gmail.com"));
@@ -25,29 +26,58 @@ var info = getNotes();
 
 //create add command
 yargs.command({
-    command: "add",
-    describe: "add new a note",
+    command: "list",
+    describe: "list all your note",
+    builder: {
+        title: {
+            describe: "list all your notes",
+            demandOption: true,
+        },
+    },
     handler: function() {
         console.log("adding a new note");
     }
 });
 
-//create list command
+//create remove command
 yargs.command({
-    command: "list",
-    describe: "list your notes",
+    command: "remove",
+    describe: "remove note",
     builder: {
         title: {
-            describe: "note body",
-            description: true,
+            describe: "note title",
+            demandOption: true,
+            // type: "string",
         },
     },
-
-    handler: function(argv) {
-        console.log("Title:" + argv.title);
-        console.log("Body:" + argv.body);
+    handler: function(dataNote) {
+        // console.log("title: " + argv.title);
+        // console.log("Body: " + argv.body);
+        notes.removeNotes(dataNote.title);
     }
 });
-console.log(yargs.argv);
+
+//create add command
+yargs.command({
+    command: "add",
+    describe: "add a new note",
+    builder: {
+        title: {
+            describe: "note title",
+            demandOption: true,
+            // type: "string",
+        },
+        body: {
+            describe: "note body",
+            demandOption: true,
+            type: "string",
+        },
+    },
+    handler: function(dataNote) {
+        // console.log("title: " + argv.title);
+        // console.log("Body: " + argv.body);
+        notes.addNote(dataNote.title, dataNote.body);
+    }
+});
 
 console.log(yargs.argv);
