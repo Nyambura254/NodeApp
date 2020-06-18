@@ -57,7 +57,7 @@ yargs.command({
     }
 });
 
-//create add command
+//create add command........
 yargs.command({
     command: "add",
     describe: "add a new note",
